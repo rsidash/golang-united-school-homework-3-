@@ -5,15 +5,16 @@ import (
 )
 
 func sortMapValues(input map[int]string) (result []string) {
-	keys := []int{}
+	keys := make([]int, 0, len(input))
 
 	for key := range input {
 		keys = append(keys, key)
 	}
-	sort.Ints(keys)
 
-	for _, value := range input {
-		result = append(result, value)
+	sort.Ints(keys) //sort keys alphabetically
+
+	for _, value := range keys {
+		result = append(result, input[value])
 	}
 
 	return result
